@@ -1,0 +1,4256 @@
+\<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>Quantum Fest 2K26 | Paper Presentation</title>
+
+<style>
+
+:root{
+  --bg:#05070c;
+  --card:#0d131d;
+  --line:#243246;
+  --text:#f7fbff;
+  --muted:#9eafc3;
+  --cyan:#40dfff;
+  --blue:#648cff;
+  --green:#35d39a;
+  --red:#ff6477;
+  --gold:#f5c85d;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  color:var(--text);
+  font-family:Inter,Segoe UI,Arial,sans-serif;
+
+  background:
+    radial-gradient(
+      circle at 10% 0,
+      #12304b 0,
+      transparent 30%
+    ),
+
+    radial-gradient(
+      circle at 100% 15%,
+      #281544 0,
+      transparent 30%
+    ),
+
+    var(--bg);
+
+  min-height:100vh;
+}
+
+button,
+input,
+select{
+  font:inherit;
+}
+
+button{
+  cursor:pointer;
+}
+
+.hidden{
+  display:none!important;
+}
+
+.wrap{
+  width:min(1180px,92%);
+  margin:auto;
+}
+
+.glass{
+  background:#0d131ddd;
+  border:1px solid var(--line);
+  border-radius:24px;
+
+  box-shadow:
+    0 22px 70px #0009;
+
+  backdrop-filter:blur(16px);
+}
+
+
+/* ================= HEADER ================= */
+
+header{
+  position:sticky;
+  top:0;
+  z-index:10;
+
+  background:#05070ce8;
+
+  border-bottom:
+    1px solid #ffffff0c;
+
+  backdrop-filter:blur(18px);
+}
+
+.nav{
+  min-height:72px;
+
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+
+  gap:18px;
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+
+  gap:11px;
+
+  font-weight:850;
+}
+
+.logo{
+  width:40px;
+  height:40px;
+
+  border-radius:12px;
+
+  display:grid;
+  place-items:center;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--cyan),
+      var(--blue)
+    );
+
+  color:#031019;
+
+  font-weight:950;
+}
+
+nav{
+  display:flex;
+  gap:5px;
+  flex-wrap:wrap;
+}
+
+nav button{
+  border:1px solid transparent;
+
+  background:transparent;
+
+  color:var(--muted);
+
+  padding:10px 13px;
+
+  border-radius:11px;
+}
+
+nav button:hover{
+  background:#ffffff09;
+
+  color:#fff;
+
+  border-color:var(--line);
+}
+
+
+/* ================= MAIN ================= */
+
+main{
+  padding:30px 0 65px;
+}
+
+.hero{
+  padding:38px;
+
+  display:grid;
+
+  grid-template-columns:
+    1.2fr .8fr;
+
+  gap:22px;
+}
+
+.eyebrow{
+  font-size:12px;
+
+  font-weight:850;
+
+  letter-spacing:2px;
+
+  text-transform:uppercase;
+
+  color:var(--cyan);
+}
+
+h1{
+  font-size:
+    clamp(38px,6vw,70px);
+
+  line-height:.96;
+
+  margin:14px 0;
+}
+
+h2{
+  margin:0 0 10px;
+
+  font-size:28px;
+}
+
+h3{
+  margin:0 0 8px;
+}
+
+p{
+  color:var(--muted);
+
+  line-height:1.7;
+}
+
+.card{
+  padding:23px;
+}
+
+.grid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(4,1fr);
+
+  gap:14px;
+
+  margin-top:22px;
+}
+
+.stat strong{
+  font-size:25px;
+
+  display:block;
+
+  margin-top:8px;
+}
+
+.label{
+  font-size:13px;
+
+  color:var(--muted);
+}
+
+.event-grid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(2,1fr);
+
+  gap:12px;
+}
+
+.info{
+  padding:16px;
+
+  border:
+    1px solid var(--line);
+
+  border-radius:15px;
+
+  background:#ffffff04;
+}
+
+.info b{
+  display:block;
+
+  margin-top:5px;
+
+  color:#fff;
+}
+
+.section{
+  margin-top:22px;
+}
+
+.btn{
+  border:0;
+
+  border-radius:12px;
+
+  padding:12px 16px;
+
+  font-weight:850;
+
+  color:#031019;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--cyan),
+      #6c9cff
+    );
+
+  box-shadow:
+    0 8px 25px #40dfff22;
+}
+
+.btn.secondary{
+  background:#ffffff08;
+
+  color:#fff;
+
+  border:
+    1px solid var(--line);
+
+  box-shadow:none;
+}
+
+.btn.danger{
+  background:#ff647718;
+
+  color:#ff8b99;
+
+  border:
+    1px solid #ff647733;
+}
+
+.actions{
+  display:flex;
+
+  gap:10px;
+
+  flex-wrap:wrap;
+}
+
+
+/* ================= AUTH ================= */
+
+.auth{
+  min-height:100vh;
+
+  display:grid;
+
+  place-items:center;
+
+  padding:24px;
+}
+
+.authbox{
+  width:min(1000px,100%);
+
+  display:grid;
+
+  grid-template-columns:
+    1.1fr .9fr;
+
+  overflow:hidden;
+}
+
+.authinfo{
+  padding:50px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #0d2033,
+      #090d14
+    );
+}
+
+.authform{
+  padding:40px;
+}
+
+.form{
+  display:grid;
+
+  gap:14px;
+}
+
+.field{
+  display:grid;
+
+  gap:7px;
+}
+
+label{
+  font-size:13px;
+
+  font-weight:750;
+}
+
+input,
+select{
+  width:100%;
+
+  padding:13px 14px;
+
+  border:
+    1px solid #2a3a4e;
+
+  border-radius:12px;
+
+  background:#070b11;
+
+  color:#fff;
+
+  outline:none;
+}
+
+select option{
+  background:#070b11;
+
+  color:#fff;
+}
+
+input:focus,
+select:focus{
+  border-color:var(--cyan);
+
+  box-shadow:
+    0 0 0 3px #40dfff12;
+}
+
+.notice{
+  padding:12px 14px;
+
+  border:
+    1px solid #40dfff25;
+
+  background:#40dfff09;
+
+  border-radius:12px;
+
+  color:#c6f5ff;
+
+  font-size:13px;
+}
+
+
+/* ================= TABLE ================= */
+
+.table{
+  overflow:auto;
+
+  border:
+    1px solid var(--line);
+
+  border-radius:18px;
+}
+
+table{
+  width:100%;
+
+  border-collapse:collapse;
+
+  min-width:900px;
+}
+
+th,
+td{
+  padding:14px;
+
+  border-bottom:
+    1px solid #ffffff0b;
+
+  text-align:left;
+}
+
+th{
+  font-size:12px;
+
+  color:#a9bbcf;
+
+  text-transform:uppercase;
+
+  letter-spacing:1px;
+
+  background:#ffffff04;
+}
+
+tr:last-child td{
+  border:0;
+}
+
+.badge{
+  display:inline-flex;
+
+  padding:5px 9px;
+
+  border-radius:999px;
+
+  font-size:12px;
+
+  font-weight:800;
+}
+
+.ok{
+  color:var(--green);
+
+  background:#35d39a18;
+}
+
+.wait{
+  color:var(--gold);
+
+  background:#f5c85d18;
+}
+
+
+/* ================= UPLOAD ================= */
+
+.upload{
+  border:
+    1.5px dashed #30445c;
+
+  border-radius:17px;
+
+  padding:35px;
+
+  text-align:center;
+
+  background:#ffffff03;
+
+  transition:.2s;
+}
+
+.upload:hover{
+  border-color:var(--cyan);
+
+  background:#40dfff05;
+}
+
+
+/* ================= TOPLINE ================= */
+
+.topline{
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  gap:15px;
+
+  margin-bottom:18px;
+}
+
+
+/* ================= FOOTER ================= */
+
+footer{
+  text-align:center;
+
+  color:#64768b;
+
+  padding:20px;
+}
+
+
+/* ================= TOAST ================= */
+
+.toast{
+  position:fixed;
+
+  right:20px;
+
+  bottom:20px;
+
+  max-width:420px;
+
+  padding:14px 18px;
+
+  border-radius:13px;
+
+  background:#111b27;
+
+  border:
+    1px solid var(--line);
+
+  box-shadow:
+    0 15px 45px #0009;
+
+  z-index:100;
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:850px){
+
+  .hero,
+  .authbox{
+    grid-template-columns:1fr;
+  }
+
+  .grid{
+    grid-template-columns:
+      1fr 1fr;
+  }
+
+  .authinfo{
+    padding:32px;
+  }
+
+}
+
+@media(max-width:520px){
+
+  .nav{
+    padding:12px 0;
+
+    align-items:flex-start;
+
+    flex-direction:column;
+  }
+
+  nav{
+    width:100%;
+
+    overflow:auto;
+
+    flex-wrap:nowrap;
+  }
+
+  .grid,
+  .event-grid{
+    grid-template-columns:1fr;
+  }
+
+  .hero{
+    padding:23px;
+  }
+
+  .authform{
+    padding:25px;
+  }
+
+  h1{
+    font-size:43px;
+  }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     LOGIN PAGE
+===================================================== -->
+
+<div id="login" class="auth">
+
+<div class="authbox glass">
+
+
+<!-- LEFT SIDE -->
+
+<section class="authinfo">
+
+<div class="brand">
+
+<div class="logo">
+QF
+</div>
+
+<span>
+QUANTUM FEST 2K26
+</span>
+
+</div>
+
+
+<div
+style="margin-top:55px"
+class="eyebrow">
+
+Paper Presentation
+
+</div>
+
+
+<h1>
+
+Research.<br>
+
+Innovate.<br>
+
+<span style="color:var(--cyan)">
+Present.
+</span>
+
+</h1>
+
+
+<p>
+
+Welcome to the official Paper Presentation portal.
+Participants can access their team workspace and upload
+their presentation. Organizers can manage teams and
+schedules from the secure admin portal.
+
+</p>
+
+
+<div class="event-grid">
+
+
+<div class="info">
+
+EVENT
+
+<b>
+Paper Presentation
+</b>
+
+</div>
+
+
+<div class="info">
+
+TOTAL EVENT TIME
+
+<b>
+9:00 AM – 10:30 AM
+</b>
+
+</div>
+
+
+<div class="info">
+
+VENUE
+
+<b>
+Hall No. 302
+</b>
+
+</div>
+
+
+<div class="info">
+
+GUEST
+
+<b>
+Mr. V. Manimaran
+</b>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- RIGHT SIDE -->
+
+<section class="authform">
+
+
+<!-- PARTICIPANT LOGIN -->
+
+<div id="participantLogin">
+
+
+<div class="eyebrow">
+Participant Login
+</div>
+
+
+<h2>
+Team Portal
+</h2>
+
+
+<p>
+Login with your existing team details.
+</p>
+
+
+<form
+class="form"
+onsubmit="participantLogin(event)"
+>
+
+
+<div class="field">
+
+<label>
+Team Name
+</label>
+
+<input
+id="teamLogin"
+required
+placeholder="Enter team name"
+>
+
+</div>
+
+
+
+<div class="field">
+
+<label>
+Email ID
+</label>
+
+<input
+id="emailLogin"
+type="text"
+required
+placeholder="Enter email ID"
+>
+
+</div>
+
+
+
+<div class="field">
+
+<label>
+Year
+</label>
+
+<select
+id="yearLogin"
+required
+>
+
+<option value="">
+Select Year
+</option>
+
+<option value="1st Year">
+1st Year
+</option>
+
+<option value="2nd Year">
+2nd Year
+</option>
+
+<option value="3rd Year">
+3rd Year
+</option>
+
+<option value="4th Year">
+4th Year
+</option>
+
+<option value="5th Year">
+5th Year
+</option>
+
+</select>
+
+</div>
+
+
+
+<div class="field">
+
+<label>
+Password
+</label>
+
+<input
+id="passwordLogin"
+type="password"
+value="123456"
+required
+>
+
+</div>
+
+
+
+<button class="btn">
+
+Sign In
+
+</button>
+
+
+</form>
+
+
+
+<div
+class="notice"
+style="margin-top:16px"
+>
+
+Participant default password:
+<b>123456</b>
+
+</div>
+
+
+</div>
+
+
+
+<!-- ADMIN LOGIN -->
+
+<div id="adminLogin" class="hidden">
+
+
+<div
+class="eyebrow"
+style="color:#b99aff"
+>
+
+Organizer Login
+
+</div>
+
+
+<h2>
+Admin Portal
+</h2>
+
+
+<p>
+Authorized event organizer access.
+</p>
+
+
+<form
+class="form"
+onsubmit="adminLogin(event)"
+>
+
+
+<div class="field">
+
+<label>
+Admin Email
+</label>
+
+<input
+id="adminEmail"
+type="email"
+required
+placeholder="Admin email"
+>
+
+</div>
+
+
+
+<div class="field">
+
+<label>
+Admin Password
+</label>
+
+<input
+id="adminPassword"
+type="password"
+required
+placeholder="Admin password"
+>
+
+</div>
+
+
+
+<button
+class="btn"
+style="
+background:
+linear-gradient(
+135deg,
+#9c7cff,
+#c38cff
+)
+"
+>
+
+Admin Sign In
+
+</button>
+
+
+</form>
+
+
+</div>
+
+
+
+<button
+id="showAdminBtn"
+class="btn secondary"
+style="
+margin-top:22px;
+width:100%
+"
+onclick="showAdminLogin()"
+>
+
+Admin Login
+
+</button>
+
+
+
+<button
+id="backParticipantBtn"
+class="btn secondary hidden"
+style="
+margin-top:22px;
+width:100%
+"
+onclick="showParticipantLogin()"
+>
+
+← Participant Login
+
+</button>
+
+
+</section>
+
+</div>
+
+</div>
+
+
+
+<!-- =====================================================
+     APPLICATION
+===================================================== -->
+
+<div id="app" class="hidden">
+
+
+<header>
+
+<div class="wrap nav">
+
+
+<div class="brand">
+
+<div class="logo">
+QF
+</div>
+
+<span>
+Quantum Fest 2K26
+</span>
+
+</div>
+
+
+
+<!-- PARTICIPANT NAV -->
+
+<nav id="participantNav">
+
+<button onclick="page('dashboard')">
+Dashboard
+</button>
+
+<button onclick="page('event')">
+Event Details
+</button>
+
+<button onclick="page('submit')">
+Paper Submission
+</button>
+
+<button onclick="page('schedule')">
+Schedule
+</button>
+
+<button onclick="logout()">
+Sign Out
+</button>
+
+</nav>
+
+
+
+<!-- ADMIN NAV -->
+
+<nav id="adminNav" class="hidden">
+
+<button onclick="page('admin')">
+Admin Dashboard
+</button>
+
+<button onclick="page('schedule')">
+Schedule
+</button>
+
+<button onclick="logout()">
+Sign Out
+</button>
+
+</nav>
+
+
+</div>
+
+</header>
+
+
+
+<main class="wrap">
+
+
+<!-- =====================================================
+     PARTICIPANT DASHBOARD
+===================================================== -->
+
+<section id="dashboard">
+
+
+<div class="hero glass">
+
+
+<div>
+
+<div class="eyebrow">
+
+Quantum Fest 2K26 · Paper Presentation
+
+</div>
+
+
+<h1 id="welcome">
+Welcome
+</h1>
+
+
+<p id="subtitle">
+</p>
+
+
+<div class="actions">
+
+
+<button
+class="btn"
+onclick="page('submit')"
+>
+
+Upload Presentation
+
+</button>
+
+
+<button
+class="btn secondary"
+onclick="page('schedule')"
+>
+
+View Schedule
+
+</button>
+
+
+</div>
+
+</div>
+
+
+
+<div class="glass card">
+
+
+<div class="eyebrow">
+
+Your Presentation
+
+</div>
+
+
+<h2
+id="myTime"
+style="margin-top:10px"
+>
+
+Not scheduled
+
+</h2>
+
+
+<p>
+Hall No. 302 · Slot – 2
+</p>
+
+
+<span
+id="status"
+class="badge wait"
+>
+
+Pending
+
+</span>
+
+
+</div>
+
+
+</div>
+
+
+
+<div class="grid">
+
+
+<div class="glass card stat">
+
+<span class="label">
+TEAM
+</span>
+
+<strong id="teamCard">
+—
+</strong>
+
+</div>
+
+
+
+<div class="glass card stat">
+
+<span class="label">
+YEAR
+</span>
+
+<strong id="yearCard">
+—
+</strong>
+
+</div>
+
+
+
+<div class="glass card stat">
+
+<span class="label">
+VENUE
+</span>
+
+<strong>
+Hall 302
+</strong>
+
+</div>
+
+
+
+<div class="glass card stat">
+
+<span class="label">
+TOTAL EVENT TIME
+</span>
+
+<strong>
+9:00–10:30
+</strong>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     EVENT DETAILS
+===================================================== -->
+
+<section
+id="event"
+class="hidden section"
+>
+
+
+<div class="glass card">
+
+
+<div class="eyebrow">
+Event Information
+</div>
+
+
+<h2>
+Paper Presentation
+</h2>
+
+
+<p>
+
+Participants will present their research paper or innovative
+idea by explaining the title, abstract, problem statement,
+objectives, literature review, proposed methodology,
+results/findings, conclusion, and future scope before the
+judging panel.
+
+</p>
+
+
+<p>
+
+The presentation should demonstrate significance, technical
+knowledge, originality and practical relevance. Teams will
+be evaluated based on research quality, technical content,
+innovation, clarity, communication skills and ability to
+answer questions.
+
+</p>
+
+
+<p>
+
+Each team should consist of 2 to 3 members and complete
+their presentation within the allotted time.
+
+</p>
+
+
+
+<div class="event-grid">
+
+
+<div class="info">
+
+FUNCTION
+
+<b>
+Quantum Fest 2K26
+</b>
+
+</div>
+
+
+<div class="info">
+
+EVENT
+
+<b>
+Paper Presentation
+</b>
+
+</div>
+
+
+<div class="info">
+
+VENUE
+
+<b>
+Hall No. 302
+</b>
+
+</div>
+
+
+<div class="info">
+
+TOTAL EVENT TIME
+
+<b>
+9:00 AM – 10:30 AM
+</b>
+
+</div>
+
+
+<div class="info">
+
+SLOT
+
+<b>
+Slot – 2
+</b>
+
+</div>
+
+
+<div class="info">
+
+GUEST
+
+<b>
+Mr. V. Manimaran
+</b>
+
+</div>
+
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PAPER SUBMISSION
+===================================================== -->
+
+<section
+id="submit"
+class="hidden section"
+>
+
+
+<div class="glass card">
+
+
+<div class="eyebrow">
+Paper Submission
+</div>
+
+
+<h2>
+Upload Presentation
+</h2>
+
+
+<p>
+
+Accepted formats:
+PDF, PPT and PPTX.
+
+Maximum file size:
+50 MB.
+
+</p>
+
+
+
+<form
+class="form"
+onsubmit="submitPaper(event)"
+>
+
+
+<div class="field">
+
+<label>
+Team Name
+</label>
+
+<input
+id="submitTeam"
+readonly
+>
+
+</div>
+
+
+
+<div class="field">
+
+<label>
+Paper Title *
+</label>
+
+<input
+id="paperTitle"
+required
+placeholder="Enter paper title"
+>
+
+</div>
+
+
+
+<div
+class="upload"
+onclick="
+document
+.getElementById('paperFile')
+.click()
+"
+>
+
+
+<div style="font-size:38px">
+↑
+</div>
+
+
+<h3>
+Select your presentation
+</h3>
+
+
+<p>
+Click here to choose a PDF, PPT or PPTX file.
+</p>
+
+
+<input
+id="paperFile"
+type="file"
+accept=".pdf,.ppt,.pptx"
+hidden
+onchange="fileSelected(this)"
+>
+
+
+<div
+id="fileName"
+class="label"
+>
+
+No file selected
+
+</div>
+
+
+</div>
+
+
+
+<div class="actions">
+
+
+<button
+class="btn"
+id="savePresentationBtn"
+>
+
+Save / Replace Presentation
+
+</button>
+
+
+<button
+type="button"
+class="btn danger hidden"
+id="deletePresentationBtn"
+onclick="deleteMyPresentation()"
+>
+
+Delete Uploaded Presentation
+
+</button>
+
+
+</div>
+
+
+</form>
+
+
+
+<div
+id="uploadStatus"
+class="notice hidden"
+style="margin-top:16px"
+>
+</div>
+
+
+
+<div
+id="currentSubmission"
+class="glass card hidden"
+style="
+margin-top:18px;
+padding:18px
+"
+>
+
+
+<div class="eyebrow">
+Current Submission
+</div>
+
+
+<h3
+id="currentPaperTitle"
+style="margin-top:8px"
+>
+—
+</h3>
+
+
+<p
+id="currentPaperFile"
+class="label"
+>
+—
+</p>
+
+
+<div class="actions">
+
+
+<button
+type="button"
+class="btn secondary"
+onclick="editMyPresentation()"
+>
+
+Edit / Replace
+
+</button>
+
+
+<button
+type="button"
+class="btn danger"
+onclick="deleteMyPresentation()"
+>
+
+Delete
+
+</button>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- =====================================================
+     SCHEDULE
+===================================================== -->
+
+<section
+id="schedule"
+class="hidden section"
+>
+
+
+<div class="eyebrow">
+Live Event Schedule
+</div>
+
+
+<h2>
+Presentation Schedule
+</h2>
+
+
+<div class="table glass">
+
+
+<table>
+
+
+<thead>
+
+<tr>
+
+<th>
+Order
+</th>
+
+<th>
+Team ID
+</th>
+
+<th>
+Team
+</th>
+
+<th>
+Year
+</th>
+
+<th>
+Presentation Start Time
+</th>
+
+<th>
+Status
+</th>
+
+</tr>
+
+</thead>
+
+
+<tbody id="scheduleBody">
+</tbody>
+
+
+</table>
+
+
+</div>
+
+
+</section>
+
+
+
+<!-- =====================================================
+     ADMIN DASHBOARD
+===================================================== -->
+
+<section
+id="admin"
+class="hidden section"
+>
+
+
+<div class="topline">
+
+
+<div>
+
+<div
+class="eyebrow"
+style="color:#b99aff"
+>
+
+Organizer Console
+
+</div>
+
+
+<h2>
+Admin Dashboard
+</h2>
+
+
+<p>
+Manage entered teams, uploaded presentations and presentation schedules.
+</p>
+
+
+</div>
+
+
+
+<button
+class="btn danger"
+onclick="deleteAllTeams()"
+>
+
+Delete All Teams
+
+</button>
+
+
+</div>
+
+
+
+<div class="grid">
+
+
+<div class="glass card stat">
+
+<span class="label">
+ENTERED TEAMS
+</span>
+
+<strong id="teamCount">
+0
+</strong>
+
+</div>
+
+
+
+<div class="glass card stat">
+
+<span class="label">
+UPLOADED
+</span>
+
+<strong id="uploadCount">
+0
+</strong>
+
+</div>
+
+
+
+<div class="glass card stat">
+
+<span class="label">
+SCHEDULED
+</span>
+
+<strong id="scheduledCount">
+0
+</strong>
+
+</div>
+
+
+
+<div class="glass card stat">
+
+<span class="label">
+TOTAL EVENT TIME
+</span>
+
+<strong>
+9:00–10:30
+</strong>
+
+</div>
+
+
+</div>
+
+
+
+<div class="glass card section">
+
+
+<div class="topline">
+
+
+<div>
+
+<h3>
+All Entered Teams
+</h3>
+
+<span class="label">
+Delete individual teams or clear every team.
+</span>
+
+</div>
+
+
+<button
+class="btn secondary"
+onclick="resetSchedule()"
+>
+
+Reset FCFS Schedule
+
+</button>
+
+
+</div>
+
+
+
+<div class="table">
+
+
+<table>
+
+
+<thead>
+
+<tr>
+
+<th>
+Order
+</th>
+
+<th>
+Team
+</th>
+
+<th>
+Email
+</th>
+
+<th>
+Year
+</th>
+
+<th>
+Paper
+</th>
+
+<th>
+Start Time
+</th>
+
+<th>
+Download
+</th>
+
+<th>
+Delete
+</th>
+
+</tr>
+
+</thead>
+
+
+<tbody id="adminBody">
+</tbody>
+
+
+</table>
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+</main>
+
+
+
+<footer>
+Quantum Fest 2K26 · Paper Presentation
+</footer>
+
+
+</div>
+
+
+
+<div
+id="toast"
+class="toast hidden"
+>
+</div>
+
+
+
+<script>
+
+/* =====================================================
+   CONFIGURATION
+===================================================== */
+
+const ADMIN_EMAIL = "admin@123.edu";
+
+const ADMIN_PASSWORD = "nitheeshy2007";
+
+const DEFAULT_PASSWORD = "123456";
+
+const EVENT_START_MINUTES = 9 * 60;
+
+const EVENT_END_MINUTES = 10 * 60 + 30;
+
+const PRESENTATION_SLOT_MINUTES = 8;
+
+
+/* =====================================================
+   GLOBAL VARIABLES
+===================================================== */
+
+let teams = [];
+
+let user = null;
+
+let isAdmin = false;
+
+
+/* =====================================================
+   LOCAL STORAGE
+===================================================== */
+
+function loadTeams(){
+
+  try{
+
+    teams =
+      JSON.parse(
+        localStorage.getItem(
+          "QF26_TEAMS"
+        ) || "[]"
+      );
+
+  }catch(error){
+
+    console.error(error);
+
+    teams = [];
+
+  }
+
+}
+
+
+function saveTeams(){
+
+  localStorage.setItem(
+    "QF26_TEAMS",
+    JSON.stringify(teams)
+  );
+
+}
+
+
+loadTeams();
+
+
+/* =====================================================
+   INDEXEDDB
+   Stores the actual PDF/PPT/PPTX files.
+===================================================== */
+
+const FILE_DB_NAME =
+  "QF26_FILE_DATABASE";
+
+const FILE_STORE_NAME =
+  "presentations";
+
+const FILE_DB_VERSION = 1;
+
+
+function openFileDB(){
+
+  return new Promise(
+    (resolve,reject)=>{
+
+      const request =
+        indexedDB.open(
+          FILE_DB_NAME,
+          FILE_DB_VERSION
+        );
+
+
+      request.onupgradeneeded =
+        function(event){
+
+          const db =
+            event.target.result;
+
+
+          if(
+            !db.objectStoreNames
+              .contains(
+                FILE_STORE_NAME
+              )
+          ){
+
+            db.createObjectStore(
+              FILE_STORE_NAME,
+              {
+                keyPath:"id"
+              }
+            );
+
+          }
+
+        };
+
+
+      request.onsuccess =
+        function(){
+
+          resolve(
+            request.result
+          );
+
+        };
+
+
+      request.onerror =
+        function(){
+
+          reject(
+            request.error
+          );
+
+        };
+
+    }
+  );
+
+}
+
+
+/* =====================================================
+   SAVE ACTUAL FILE
+===================================================== */
+
+async function savePresentationFile(
+  teamId,
+  file
+){
+
+  const db =
+    await openFileDB();
+
+
+  return new Promise(
+    (resolve,reject)=>{
+
+      const transaction =
+        db.transaction(
+          FILE_STORE_NAME,
+          "readwrite"
+        );
+
+
+      const store =
+        transaction.objectStore(
+          FILE_STORE_NAME
+        );
+
+
+      store.put({
+
+        id:teamId,
+
+        file:file,
+
+        fileName:file.name,
+
+        fileType:file.type,
+
+        fileSize:file.size,
+
+        savedAt:
+          new Date()
+          .toISOString()
+
+      });
+
+
+      transaction.oncomplete =
+        function(){
+
+          db.close();
+
+          resolve(true);
+
+        };
+
+
+      transaction.onerror =
+        function(){
+
+          db.close();
+
+          reject(
+            transaction.error
+          );
+
+        };
+
+    }
+  );
+
+}
+
+
+/* =====================================================
+   GET ACTUAL FILE
+===================================================== */
+
+async function getPresentationFile(
+  teamId
+){
+
+  const db =
+    await openFileDB();
+
+
+  return new Promise(
+    (resolve,reject)=>{
+
+      const transaction =
+        db.transaction(
+          FILE_STORE_NAME,
+          "readonly"
+        );
+
+
+      const store =
+        transaction.objectStore(
+          FILE_STORE_NAME
+        );
+
+
+      const request =
+        store.get(teamId);
+
+
+      request.onsuccess =
+        function(){
+
+          db.close();
+
+          resolve(
+            request.result || null
+          );
+
+        };
+
+
+      request.onerror =
+        function(){
+
+          db.close();
+
+          reject(
+            request.error
+          );
+
+        };
+
+    }
+  );
+
+}
+
+
+/* =====================================================
+   DELETE ACTUAL FILE
+===================================================== */
+
+async function deletePresentationFile(
+  teamId
+){
+
+  const db =
+    await openFileDB();
+
+
+  return new Promise(
+    (resolve,reject)=>{
+
+      const transaction =
+        db.transaction(
+          FILE_STORE_NAME,
+          "readwrite"
+        );
+
+
+      const store =
+        transaction.objectStore(
+          FILE_STORE_NAME
+        );
+
+
+      store.delete(teamId);
+
+
+      transaction.oncomplete =
+        function(){
+
+          db.close();
+
+          resolve(true);
+
+        };
+
+
+      transaction.onerror =
+        function(){
+
+          db.close();
+
+          reject(
+            transaction.error
+          );
+
+        };
+
+    }
+  );
+
+}
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+function toast(msg){
+
+  const t =
+    document.getElementById(
+      "toast"
+    );
+
+
+  t.textContent = msg;
+
+
+  t.classList.remove(
+    "hidden"
+  );
+
+
+  setTimeout(
+    ()=>{
+      t.classList.add(
+        "hidden"
+      );
+    },
+    3000
+  );
+
+}
+
+
+/* =====================================================
+   LOGIN SWITCH
+===================================================== */
+
+function showAdminLogin(){
+
+  document
+    .getElementById(
+      "participantLogin"
+    )
+    .classList
+    .add("hidden");
+
+
+  document
+    .getElementById(
+      "adminLogin"
+    )
+    .classList
+    .remove("hidden");
+
+
+  document
+    .getElementById(
+      "showAdminBtn"
+    )
+    .classList
+    .add("hidden");
+
+
+  document
+    .getElementById(
+      "backParticipantBtn"
+    )
+    .classList
+    .remove("hidden");
+
+}
+
+
+function showParticipantLogin(){
+
+  document
+    .getElementById(
+      "adminLogin"
+    )
+    .classList
+    .add("hidden");
+
+
+  document
+    .getElementById(
+      "participantLogin"
+    )
+    .classList
+    .remove("hidden");
+
+
+  document
+    .getElementById(
+      "showAdminBtn"
+    )
+    .classList
+    .remove("hidden");
+
+
+  document
+    .getElementById(
+      "backParticipantBtn"
+    )
+    .classList
+    .add("hidden");
+
+}
+
+
+/* =====================================================
+   PARTICIPANT LOGIN
+===================================================== */
+
+function participantLogin(e){
+
+  e.preventDefault();
+
+
+  const name =
+    document
+      .getElementById(
+        "teamLogin"
+      )
+      .value
+      .trim();
+
+
+  const email =
+    document
+      .getElementById(
+        "emailLogin"
+      )
+      .value
+      .trim()
+      .toLowerCase();
+
+
+  const year =
+    document
+      .getElementById(
+        "yearLogin"
+      )
+      .value;
+
+
+  const password =
+    document
+      .getElementById(
+        "passwordLogin"
+      )
+      .value;
+
+
+  if(!name){
+
+    return toast(
+      "Enter your team name."
+    );
+
+  }
+
+
+  if(!email){
+
+    return toast(
+      "Enter an email ID."
+    );
+
+  }
+
+
+  if(!year){
+
+    return toast(
+      "Please select your year."
+    );
+
+  }
+
+
+  if(
+    password !==
+    DEFAULT_PASSWORD
+  ){
+
+    return toast(
+      "Incorrect password. Use 123456."
+    );
+
+  }
+
+
+  let t =
+    teams.find(
+      x =>
+        x.name
+          .toLowerCase()
+        ===
+        name
+          .toLowerCase()
+        &&
+        x.email
+          .toLowerCase()
+        ===
+        email
+    );
+
+
+  if(!t){
+
+    t = {
+
+      id:
+        "QF26-T" +
+        String(
+          teams.length + 1
+        ).padStart(
+          3,
+          "0"
+        ),
+
+      name:name,
+
+      email:email,
+
+      password:
+        DEFAULT_PASSWORD,
+
+      year:year,
+
+      order:
+        teams.length + 1,
+
+      start:"",
+
+      end:"",
+
+      paper:null
+
+    };
+
+
+    teams.push(t);
+
+    saveTeams();
+
+  }else{
+
+    /*
+      Update year if an existing
+      participant selects a year.
+    */
+
+    t.year = year;
+
+    saveTeams();
+
+  }
+
+
+  user = t;
+
+  isAdmin = false;
+
+
+  openApp();
+
+
+  toast(
+    "Participant login successful."
+  );
+
+}
+
+
+/* =====================================================
+   ADMIN LOGIN
+===================================================== */
+
+function adminLogin(e){
+
+  e.preventDefault();
+
+
+  const email =
+    document
+      .getElementById(
+        "adminEmail"
+      )
+      .value
+      .trim();
+
+
+  const password =
+    document
+      .getElementById(
+        "adminPassword"
+      )
+      .value;
+
+
+  if(
+    email !== ADMIN_EMAIL ||
+    password !== ADMIN_PASSWORD
+  ){
+
+    return toast(
+      "Invalid admin credentials."
+    );
+
+  }
+
+
+  user = null;
+
+  isAdmin = true;
+
+
+  openApp();
+
+
+  toast(
+    "Admin login successful."
+  );
+
+}
+
+
+/* =====================================================
+   OPEN APP
+===================================================== */
+
+function openApp(){
+
+  document
+    .getElementById(
+      "login"
+    )
+    .classList
+    .add("hidden");
+
+
+  document
+    .getElementById(
+      "app"
+    )
+    .classList
+    .remove("hidden");
+
+
+  document
+    .getElementById(
+      "participantNav"
+    )
+    .classList
+    .toggle(
+      "hidden",
+      isAdmin
+    );
+
+
+  document
+    .getElementById(
+      "adminNav"
+    )
+    .classList
+    .toggle(
+      "hidden",
+      !isAdmin
+    );
+
+
+  page(
+    isAdmin
+      ? "admin"
+      : "dashboard"
+  );
+
+}
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+function logout(){
+
+  user = null;
+
+  isAdmin = false;
+
+  location.reload();
+
+}
+
+
+/* =====================================================
+   PAGE NAVIGATION
+===================================================== */
+
+function page(p){
+
+  if(
+    isAdmin &&
+    [
+      "dashboard",
+      "event",
+      "submit"
+    ].includes(p)
+  ){
+
+    p = "admin";
+
+  }
+
+
+  if(
+    !isAdmin &&
+    p === "admin"
+  ){
+
+    p = "dashboard";
+
+  }
+
+
+  [
+    "dashboard",
+    "event",
+    "submit",
+    "schedule",
+    "admin"
+  ].forEach(
+    x =>
+      document
+        .getElementById(x)
+        .classList
+        .add("hidden")
+  );
+
+
+  document
+    .getElementById(p)
+    .classList
+    .remove("hidden");
+
+
+  render();
+
+
+  if(
+    p === "submit" &&
+    !isAdmin
+  ){
+
+    renderSubmission();
+
+  }
+
+}
+
+
+/* =====================================================
+   FORMAT TIME
+===================================================== */
+
+function fmt(v){
+
+  if(!v){
+
+    return "Not scheduled";
+
+  }
+
+
+  const [
+    h,
+    m
+  ] =
+    v
+      .split(":")
+      .map(Number);
+
+
+  return `${
+    h % 12 || 12
+  }:${
+    String(m).padStart(
+      2,
+      "0"
+    )
+  } ${
+    h >= 12
+      ? "PM"
+      : "AM"
+  }`;
+
+}
+
+
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+function esc(s){
+
+  return String(s)
+    .replace(
+      /[&<>"']/g,
+      m =>
+        ({
+          "&":"&amp;",
+          "<":"&lt;",
+          ">":"&gt;",
+          '"':"&quot;",
+          "'":"&#039;"
+        }[m])
+    );
+
+}
+
+
+/* =====================================================
+   MAIN RENDER
+===================================================== */
+
+function render(){
+
+  if(
+    !isAdmin &&
+    user
+  ){
+
+    const t =
+      teams.find(
+        x =>
+          x.id === user.id
+      );
+
+
+    if(!t){
+
+      return;
+
+    }
+
+
+    user = t;
+
+
+    document
+      .getElementById(
+        "welcome"
+      )
+      .textContent =
+      "Welcome, " +
+      t.name;
+
+
+    document
+      .getElementById(
+        "subtitle"
+      )
+      .textContent =
+      t.id +
+      " · " +
+      t.email +
+      " · " +
+      (
+        t.year ||
+        "Year not specified"
+      );
+
+
+    document
+      .getElementById(
+        "teamCard"
+      )
+      .textContent =
+      t.name;
+
+
+    document
+      .getElementById(
+        "yearCard"
+      )
+      .textContent =
+      t.year ||
+      "—";
+
+
+    document
+      .getElementById(
+        "submitTeam"
+      )
+      .value =
+      t.name;
+
+
+    /*
+      ONLY START TIME IS DISPLAYED.
+    */
+
+    document
+      .getElementById(
+        "myTime"
+      )
+      .textContent =
+      t.start
+        ? fmt(t.start)
+        : "Not scheduled";
+
+
+    const s =
+      document.getElementById(
+        "status"
+      );
+
+
+    s.textContent =
+      t.paper
+        ? "Submitted"
+        : "Pending";
+
+
+    s.className =
+      "badge " +
+      (
+        t.paper
+          ? "ok"
+          : "wait"
+      );
+
+
+    renderSubmission();
+
+  }
+
+
+  renderSchedule();
+
+
+  if(isAdmin){
+
+    renderAdmin();
+
+  }
+
+}
+
+
+/* =====================================================
+   RENDER SCHEDULE
+===================================================== */
+
+function renderSchedule(){
+
+  const b =
+    document.getElementById(
+      "scheduleBody"
+    );
+
+
+  if(!b){
+
+    return;
+
+  }
+
+
+  b.innerHTML =
+    [...teams]
+      .sort(
+        (a,b) =>
+          a.order - b.order
+      )
+      .map(
+        t => `
+
+<tr>
+
+<td>
+#${String(t.order).padStart(2,"0")}
+</td>
+
+
+<td>
+${esc(t.id)}
+</td>
+
+
+<td>
+<b>
+${esc(t.name)}
+</b>
+</td>
+
+
+<td>
+${esc(
+  t.year ||
+  "Not specified"
+)}
+</td>
+
+
+<td>
+
+${
+  t.start
+    ? fmt(t.start)
+    : "Not scheduled"
+}
+
+</td>
+
+
+<td>
+
+<span
+class="badge ${
+  t.paper
+    ? "ok"
+    : "wait"
+}"
+>
+
+${
+  t.paper
+    ? "Submitted"
+    : "Pending"
+}
+
+</span>
+
+</td>
+
+</tr>
+
+`
+      )
+      .join("");
+
+}
+
+
+/* =====================================================
+   RENDER ADMIN
+===================================================== */
+
+function renderAdmin(){
+
+  document
+    .getElementById(
+      "teamCount"
+    )
+    .textContent =
+    teams.length;
+
+
+  document
+    .getElementById(
+      "uploadCount"
+    )
+    .textContent =
+    teams.filter(
+      t => t.paper
+    ).length;
+
+
+  document
+    .getElementById(
+      "scheduledCount"
+    )
+    .textContent =
+    teams.filter(
+      t => t.start
+    ).length;
+
+
+  document
+    .getElementById(
+      "adminBody"
+    )
+    .innerHTML =
+
+    [...teams]
+      .sort(
+        (a,b) =>
+          a.order - b.order
+      )
+      .map(
+        t => `
+
+<tr>
+
+
+<td>
+#${t.order}
+</td>
+
+
+<td>
+
+<b>
+${esc(t.name)}
+</b>
+
+<br>
+
+<span class="label">
+${esc(t.id)}
+</span>
+
+</td>
+
+
+<td>
+${esc(t.email)}
+</td>
+
+
+<td>
+${esc(
+  t.year ||
+  "Not specified"
+)}
+</td>
+
+
+<td>
+
+${
+  t.paper
+    ? esc(t.paper.title)
+    : "Not uploaded"
+}
+
+</td>
+
+
+<td>
+
+<input
+type="time"
+value="${t.start || ""}"
+onchange="
+changeTime(
+  '${t.id}',
+  this.value
+)
+"
+>
+
+</td>
+
+
+<td>
+
+${
+  t.paper
+    ? `
+
+<button
+class="btn secondary"
+onclick="
+downloadPresentation(
+  '${t.id}'
+)
+"
+>
+
+Download
+
+</button>
+
+`
+    : "—"
+}
+
+</td>
+
+
+<td>
+
+<button
+class="btn danger"
+onclick="
+deleteTeam(
+  '${t.id}'
+)
+"
+>
+
+Delete
+
+</button>
+
+</td>
+
+
+</tr>
+
+`
+      )
+      .join("");
+
+}
+
+
+/* =====================================================
+   CHANGE PRESENTATION TIME
+===================================================== */
+
+function changeTime(
+  id,
+  start
+){
+
+  const t =
+    teams.find(
+      x =>
+        x.id === id
+    );
+
+
+  if(
+    !t ||
+    !start
+  ){
+
+    return;
+
+  }
+
+
+  const [
+    h,
+    m
+  ] =
+    start
+      .split(":")
+      .map(Number);
+
+
+  const startMinutes =
+    h * 60 + m;
+
+
+  const endMinutes =
+    startMinutes +
+    PRESENTATION_SLOT_MINUTES;
+
+
+  /*
+    Event must finish by
+    10:30 AM.
+  */
+
+  if(
+    startMinutes <
+    EVENT_START_MINUTES
+  ){
+
+    return toast(
+      "Presentation cannot start before 9:00 AM."
+    );
+
+  }
+
+
+  if(
+    endMinutes >
+    EVENT_END_MINUTES
+  ){
+
+    return toast(
+      "Presentation must finish by 10:30 AM."
+    );
+
+  }
+
+
+  t.start = start;
+
+
+  /*
+    End time is stored internally
+    only for validation.
+
+    It is NEVER displayed.
+  */
+
+  t.end =
+    String(
+      Math.floor(
+        endMinutes / 60
+      )
+    ).padStart(
+      2,
+      "0"
+    )
+    +
+    ":" +
+    String(
+      endMinutes % 60
+    ).padStart(
+      2,
+      "0"
+    );
+
+
+  saveTeams();
+
+
+  render();
+
+
+  toast(
+    "Presentation start time changed."
+  );
+
+}
+
+
+/* =====================================================
+   RESET FCFS SCHEDULE
+===================================================== */
+
+function resetSchedule(){
+
+  [...teams]
+    .sort(
+      (a,b) =>
+        a.order - b.order
+    )
+    .forEach(
+      (t,i) => {
+
+        const startMinutes =
+          EVENT_START_MINUTES +
+          i *
+          PRESENTATION_SLOT_MINUTES;
+
+
+        const endMinutes =
+          startMinutes +
+          PRESENTATION_SLOT_MINUTES;
+
+
+        t.order =
+          i + 1;
+
+
+        t.start =
+          String(
+            Math.floor(
+              startMinutes / 60
+            )
+          ).padStart(
+            2,
+            "0"
+          )
+          +
+          ":" +
+          String(
+            startMinutes % 60
+          ).padStart(
+            2,
+            "0"
+          );
+
+
+        t.end =
+          String(
+            Math.floor(
+              endMinutes / 60
+            )
+          ).padStart(
+            2,
+            "0"
+          )
+          +
+          ":" +
+          String(
+            endMinutes % 60
+          ).padStart(
+            2,
+            "0"
+          );
+
+      }
+    );
+
+
+  saveTeams();
+
+  render();
+
+
+  toast(
+    "FCFS schedule restored."
+  );
+
+}
+
+
+/* =====================================================
+   FILE SELECTED
+===================================================== */
+
+function fileSelected(input){
+
+  const f =
+    input.files[0];
+
+
+  document
+    .getElementById(
+      "fileName"
+    )
+    .textContent =
+
+    f
+      ? `${f.name} · ${
+          (f.size / 1048576)
+            .toFixed(2)
+        } MB · Ready to save`
+      : "No file selected";
+
+}
+
+
+/* =====================================================
+   SUBMIT PAPER
+===================================================== */
+
+async function submitPaper(e){
+
+  e.preventDefault();
+
+
+  if(isAdmin){
+
+    return toast(
+      "Admin cannot upload presentations."
+    );
+
+  }
+
+
+  const f =
+    document
+      .getElementById(
+        "paperFile"
+      )
+      .files[0];
+
+
+  const title =
+    document
+      .getElementById(
+        "paperTitle"
+      )
+      .value
+      .trim();
+
+
+  const t =
+    teams.find(
+      x =>
+        x.id === user.id
+    );
+
+
+  if(!t){
+
+    return toast(
+      "Your team session could not be found."
+    );
+
+  }
+
+
+  if(!title){
+
+    return toast(
+      "Enter the paper title."
+    );
+
+  }
+
+
+  /*
+    No file + no previous submission
+  */
+
+  if(
+    !f &&
+    !t.paper
+  ){
+
+    return toast(
+      "Select a presentation file."
+    );
+
+  }
+
+
+  /*
+    Validate new file.
+  */
+
+  if(f){
+
+    if(
+      f.size >
+      50 * 1024 * 1024
+    ){
+
+      return toast(
+        "Maximum file size is 50 MB."
+      );
+
+    }
+
+
+    if(
+      !/\.(pdf|ppt|pptx)$/i
+        .test(f.name)
+    ){
+
+      return toast(
+        "Only PDF, PPT and PPTX files are allowed."
+      );
+
+    }
+
+  }
+
+
+  try{
+
+    /*
+      If a new file was selected,
+      store the actual file in IndexedDB.
+    */
+
+    if(f){
+
+      await savePresentationFile(
+        t.id,
+        f
+      );
+
+
+      t.paper = {
+
+        name:f.name,
+
+        title:title,
+
+        size:f.size,
+
+        type:
+          f.type,
+
+        uploadedAt:
+          new Date()
+            .toISOString(),
+
+        fileStored:true
+
+      };
+
+    }else{
+
+      /*
+        Existing file:
+        update title only.
+      */
+
+      t.paper.title =
+        title;
+
+    }
+
+
+    saveTeams();
+
+
+    user = t;
+
+
+    renderSubmission();
+
+    render();
+
+
+    toast(
+      f
+        ? "Presentation uploaded successfully."
+        : "Paper title updated successfully."
+    );
+
+
+  }catch(error){
+
+    console.error(
+      "File upload error:",
+      error
+    );
+
+
+    toast(
+      "Unable to save the presentation file."
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   RENDER SUBMISSION
+===================================================== */
+
+function renderSubmission(){
+
+  if(
+    isAdmin ||
+    !user
+  ){
+
+    return;
+
+  }
+
+
+  const t =
+    teams.find(
+      x =>
+        x.id === user.id
+    );
+
+
+  if(!t){
+
+    return;
+
+  }
+
+
+  const current =
+    document.getElementById(
+      "currentSubmission"
+    );
+
+
+  const deleteBtn =
+    document.getElementById(
+      "deletePresentationBtn"
+    );
+
+
+  const status =
+    document.getElementById(
+      "uploadStatus"
+    );
+
+
+  if(t.paper){
+
+    current
+      .classList
+      .remove("hidden");
+
+
+    deleteBtn
+      .classList
+      .remove("hidden");
+
+
+    document
+      .getElementById(
+        "currentPaperTitle"
+      )
+      .textContent =
+      t.paper.title ||
+      "Untitled paper";
+
+
+    document
+      .getElementById(
+        "currentPaperFile"
+      )
+      .textContent =
+      `${
+        t.paper.name
+      } · ${
+        (
+          Number(
+            t.paper.size || 0
+          ) /
+          1048576
+        ).toFixed(2)
+      } MB`;
+
+
+    status
+      .classList
+      .remove("hidden");
+
+
+    status.textContent =
+      "Your presentation is currently submitted. You can edit/replace or delete it.";
+
+  }else{
+
+    current
+      .classList
+      .add("hidden");
+
+
+    deleteBtn
+      .classList
+      .add("hidden");
+
+
+    status
+      .classList
+      .add("hidden");
+
+  }
+
+}
+
+
+/* =====================================================
+   EDIT PRESENTATION
+===================================================== */
+
+function editMyPresentation(){
+
+  if(isAdmin){
+
+    return toast(
+      "Admin cannot edit participant submissions."
+    );
+
+  }
+
+
+  const t =
+    teams.find(
+      x =>
+        x.id === user.id
+    );
+
+
+  if(!t){
+
+    return;
+
+  }
+
+
+  document
+    .getElementById(
+      "paperTitle"
+    )
+    .value =
+    t.paper?.title ||
+    "";
+
+
+  document
+    .getElementById(
+      "paperFile"
+    )
+    .value =
+    "";
+
+
+  document
+    .getElementById(
+      "fileName"
+    )
+    .textContent =
+
+    t.paper
+      ? `Current file: ${
+          t.paper.name
+        } (choose a new file to replace it)`
+      : "No file selected";
+
+
+  document
+    .getElementById(
+      "paperTitle"
+    )
+    .focus();
+
+
+  toast(
+    "Edit mode enabled. Choose a new file to replace the current presentation."
+  );
+
+}
+
+
+/* =====================================================
+   DELETE PARTICIPANT PRESENTATION
+===================================================== */
+
+async function deleteMyPresentation(){
+
+  if(isAdmin){
+
+    return toast(
+      "Admin cannot delete participant submissions from this page."
+    );
+
+  }
+
+
+  const t =
+    teams.find(
+      x =>
+        x.id === user.id
+    );
+
+
+  if(
+    !t ||
+    !t.paper
+  ){
+
+    return toast(
+      "You do not have an uploaded presentation."
+    );
+
+  }
+
+
+  if(
+    !confirm(
+      `Delete your uploaded presentation?\n\n` +
+      `Team: ${t.name}\n` +
+      `File: ${t.paper.name}\n\n` +
+      `This will permanently remove the uploaded presentation.`
+    )
+  ){
+
+    return;
+
+  }
+
+
+  try{
+
+    /*
+      Remove actual file.
+    */
+
+    await deletePresentationFile(
+      t.id
+    );
+
+
+    /*
+      Remove metadata.
+    */
+
+    t.paper = null;
+
+
+    saveTeams();
+
+
+    document
+      .getElementById(
+        "paperTitle"
+      )
+      .value = "";
+
+
+    document
+      .getElementById(
+        "paperFile"
+      )
+      .value = "";
+
+
+    document
+      .getElementById(
+        "fileName"
+      )
+      .textContent =
+      "No file selected";
+
+
+    renderSubmission();
+
+    render();
+
+
+    toast(
+      "Your presentation was deleted."
+    );
+
+
+  }catch(error){
+
+    console.error(
+      "Delete presentation error:",
+      error
+    );
+
+
+    toast(
+      "Unable to delete the presentation."
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   ADMIN DOWNLOAD
+===================================================== */
+
+async function downloadPresentation(id){
+
+  const t =
+    teams.find(
+      x =>
+        x.id === id
+    );
+
+
+  if(!t){
+
+    return toast(
+      "Team not found."
+    );
+
+  }
+
+
+  if(!t.paper){
+
+    return toast(
+      "No presentation uploaded."
+    );
+
+  }
+
+
+  try{
+
+    /*
+      Retrieve actual file
+      from IndexedDB.
+    */
+
+    const record =
+      await getPresentationFile(
+        id
+      );
+
+
+    /*
+      If the team was created using
+      the OLD version, only metadata
+      exists and there is no actual file.
+    */
+
+    if(
+      !record ||
+      !record.file
+    ){
+
+      return toast(
+        "This presentation was uploaded using the old version. Please ask the participant to upload the file again."
+      );
+
+    }
+
+
+    /*
+      Create temporary browser URL.
+    */
+
+    const fileURL =
+      URL.createObjectURL(
+        record.file
+      );
+
+
+    /*
+      Create download link.
+    */
+
+    const link =
+      document.createElement(
+        "a"
+      );
+
+
+    link.href =
+      fileURL;
+
+
+    link.download =
+      record.fileName ||
+      t.paper.name ||
+      "presentation";
+
+
+    link.style.display =
+      "none";
+
+
+    document
+      .body
+      .appendChild(link);
+
+
+    link.click();
+
+
+    document
+      .body
+      .removeChild(link);
+
+
+    /*
+      Release temporary URL.
+    */
+
+    setTimeout(
+      ()=>{
+        URL.revokeObjectURL(
+          fileURL
+        );
+      },
+      1000
+    );
+
+
+    toast(
+      "Presentation download started."
+    );
+
+
+  }catch(error){
+
+    console.error(
+      "Download error:",
+      error
+    );
+
+
+    toast(
+      "Unable to download the presentation."
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   DELETE INDIVIDUAL TEAM
+===================================================== */
+
+async function deleteTeam(id){
+
+  const t =
+    teams.find(
+      x =>
+        x.id === id
+    );
+
+
+  if(!t){
+
+    return;
+
+  }
+
+
+  if(
+    !confirm(
+      `Delete team "${t.name}"?\n\n` +
+      `This will remove the team and its uploaded presentation.`
+    )
+  ){
+
+    return;
+
+  }
+
+
+  try{
+
+    /*
+      Delete actual uploaded file.
+    */
+
+    await deletePresentationFile(
+      id
+    );
+
+
+    /*
+      Delete team information.
+    */
+
+    teams =
+      teams.filter(
+        x =>
+          x.id !== id
+      );
+
+
+    /*
+      Re-number team order.
+    */
+
+    teams.sort(
+      (a,b)=>
+        (a.order || 999) -
+        (b.order || 999)
+    );
+
+
+    teams.forEach(
+      (x,i)=>
+        x.order =
+        i + 1
+    );
+
+
+    saveTeams();
+
+
+    render();
+
+
+    toast(
+      "Team and presentation deleted successfully."
+    );
+
+
+  }catch(error){
+
+    console.error(
+      "Delete team error:",
+      error
+    );
+
+
+    toast(
+      "Unable to delete team."
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   DELETE ALL TEAMS
+===================================================== */
+
+async function deleteAllTeams(){
+
+  if(!teams.length){
+
+    return toast(
+      "There are no entered teams."
+    );
+
+  }
+
+
+  const first =
+    confirm(
+      `Delete ALL ${teams.length} teams and their presentation files?`
+    );
+
+
+  if(!first){
+
+    return;
+
+  }
+
+
+  const second =
+    confirm(
+      "FINAL CONFIRMATION: This will permanently clear every team and uploaded presentation. Continue?"
+    );
+
+
+  if(!second){
+
+    return;
+
+  }
+
+
+  try{
+
+    /*
+      Delete every actual file.
+    */
+
+    for(
+      const team of teams
+    ){
+
+      await deletePresentationFile(
+        team.id
+      );
+
+    }
+
+
+    /*
+      Clear team records.
+    */
+
+    teams = [];
+
+
+    saveTeams();
+
+
+    render();
+
+
+    toast(
+      "All teams and presentations deleted. Site is fresh."
+    );
+
+
+  }catch(error){
+
+    console.error(
+      "Delete all error:",
+      error
+    );
+
+
+    toast(
+      "Unable to completely clear presentations."
+    );
+
+  }
+
+}
+
+
+/* =====================================================
+   END
+===================================================== */
+
+</script>
+
+</body>
+</html>
